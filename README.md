@@ -6,6 +6,8 @@ A Python module to login to iaaa.pku.edu.cn
 
 欢迎测试
 
+感谢 [Xtuz](https://github.com/Xtuzzz) 提供的 [古人的智慧](https://github.com/PkuRH/PKURunningHelper/blob/master/PKURunner/iaaa.py)
+
 ## Usage
 
 ```python
