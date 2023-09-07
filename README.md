@@ -6,6 +6,8 @@ A Python module to login to iaaa.pku.edu.cn
 
 欢迎测试
 
+选课系统的认证流程参考的是 [刷课机](https://github.com/xmcp/HEED-GUI/blob/6ed892f62d42740cf44f4468ab31bd488f593094/elective_bot.py#L53)
+
 感谢 [Xtuz](https://github.com/Xtuzzz) 提供的 [古人的智慧](https://github.com/PkuRH/PKURunningHelper/blob/master/PKURunner/iaaa.py)
 
 ## Test
