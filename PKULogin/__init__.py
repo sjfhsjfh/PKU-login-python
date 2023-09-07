@@ -1,3 +1,4 @@
+import enum
 import logging
 import random
 import requests
@@ -43,7 +44,7 @@ class PKUWebApp:
         return url.geturl()
 
 
-class PKUWebApps:
+class PKUWebApps(enum.Enum):
 
     syllabus: PKUWebApp = PKUWebApp(
         app_id="syllabus",
@@ -102,6 +103,12 @@ class PKULogin:
 
     def login(self, app: PKUWebApp) -> None:
         """登录"""
+
+        logger.info(f"Logging in... App: {app.app_id}",
+                    extra={
+                        "student_id": self.student_id,
+                        "app_id": app.app_id,
+                    })
 
         data: dict = {
             "userName": self.student_id,

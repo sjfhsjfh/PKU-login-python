@@ -21,6 +21,7 @@ class TestStringMethods(unittest.TestCase):
         self.password = os.environ["PKU_PASSWORD"]
 
 
-    def testLogin(self):
+    def test_login(self):
         login = PKULogin(self.username, self.password)
-        login.login(PKUWebApps.syllabus)
+        for app in list(PKUWebApps):
+            login.login(app.value)
