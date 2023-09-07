@@ -125,9 +125,6 @@ class PKULogin:
         res = self.session.post(
             "https://iaaa.pku.edu.cn/iaaa/oauthlogin.do",
             data=data,
-            cookies={
-                'username': self.student_id,
-            }
         )
         assert res.json()
         if res.json().get("success"):
