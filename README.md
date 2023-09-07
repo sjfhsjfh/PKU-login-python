@@ -8,6 +8,14 @@ A Python module to login to iaaa.pku.edu.cn
 
 感谢 [Xtuz](https://github.com/Xtuzzz) 提供的 [古人的智慧](https://github.com/PkuRH/PKURunningHelper/blob/master/PKURunner/iaaa.py)
 
+## Test
+
+Edit `test.py` to add your student ID and password, then run
+
+```bash
+python3 -m unittest test
+```
+
 ## Usage
 
 ```python
