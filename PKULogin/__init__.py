@@ -44,7 +44,7 @@ class PKUWebApp:
         return url.geturl()
 
 
-class PKUWebApps(PKUWebApp, enum.Enum):
+class PKUWebApps(enum.Enum):
 
     syllabus: PKUWebApp = PKUWebApp(
         app_id="syllabus",
