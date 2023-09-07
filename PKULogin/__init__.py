@@ -89,19 +89,8 @@ class PKULogin:
     def init_headers(self) -> None:
         """初始化 headers"""
 
-        self.session.headers["Accept"] = "application/json, text/javascript, */*; q=0.01"
-        self.session.headers["Accept-Encoding"] = "gzip, deflate, br"
-        self.session.headers["Accept-Language"] = "zh-CN,zh;q=0.8,zh-TW;q=0.7,zh-HK;q=0.5,en-US;q=0.3,en;q=0.2"
-        self.session.headers["Connection"] = "keep-alive"
-        self.session.headers["Content-Type"] = "application/x-www-form-urlencoded; charset=UTF-8"
-        self.session.headers["Host"] = "iaaa.pku.edu.cn"
-        self.session.headers["Origin"] = "https://iaaa.pku.edu.cn"
-        self.session.headers["Sec-Fetch-Dest"] = "empty"
-        self.session.headers["Sec-Fetch-Mode"] = "cors"
-        self.session.headers["Sec-Fetch-Site"] = "same-origin"
         self.session.headers["User-Agent"] = "Mozilla/5.0 (Macintosh; Intel Mac OS X 10.15; rv:109.0) Gecko/20100101 Firefox/114.0"
-        self.session.headers["X-Requested-With"] = "XMLHttpRequest"
-        self.session.headers["Upgrade-Insecure-Requests"] = "1"
+        self.session.headers["Cache-Control"] = "max-age=0"
 
     def login(self, app: PKUWebApp) -> None:
         """登录"""
@@ -144,8 +133,6 @@ class PKULogin:
             login_res = self.session.get(
                 app.target_url,
                 headers={
-                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-                    "Accept-Encoding": "gzip, deflate, br",
                     "Host": app.host,
                 },
                 params=params
@@ -176,3 +163,17 @@ class PKULogin:
                              "app_id": app.app_id,
                          })
             logger.error(res.json())
+
+
+class SyllabusLogin(PKULogin):
+    """课程表登录"""
+
+    def __init__(self, student_id: int, password: str) -> None:
+        super().__init__(student_id, password)
+
+    def login(self) -> None:
+        """登录"""
+
+        super().login(APPS["syllabus"])
+
+        self.session.headers["Referer"] = "https://elective.pku.edu.cn/elective2008/edu/pku/stu/elective/controller/help/HelpController.jpf"
