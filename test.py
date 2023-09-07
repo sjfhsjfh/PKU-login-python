@@ -1,7 +1,7 @@
 import logging
 import os
 import unittest
-from PKULogin import PKULogin, PKUWebApps, logger
+from PKULogin import PKULogin, APPS, logger
 
 
 logger.setLevel(logging.DEBUG)
@@ -23,5 +23,5 @@ class TestStringMethods(unittest.TestCase):
 
     def test_login(self):
         login = PKULogin(self.username, self.password)
-        for app in list(PKUWebApps):
-            login.login(app.value)
+        for app in APPS:
+            login.login(APPS[app])

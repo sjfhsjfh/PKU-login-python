@@ -1,8 +1,12 @@
+from __future__ import annotations
+
 import enum
 import logging
 import random
 import requests
 import urllib
+
+from typing import Dict
 
 logger = logging.getLogger(__name__)
 
@@ -44,21 +48,19 @@ class PKUWebApp:
         return url.geturl()
 
 
-class PKUWebApps(enum.Enum):
+APPS: Dict[str, PKUWebApp] = {
+    "syllabus": PKUWebApp(
+        "syllabus",
+        "http://elective.pku.edu.cn:80/elective2008/ssoLogin.do",
+        "ba917d327a9bfb3c695ce9c36a37098c",
+    ),
 
-    syllabus: PKUWebApp = PKUWebApp(
-        app_id="syllabus",
-        url="http://elective.pku.edu.cn:80/elective2008/ssoLogin.do",
-        route="ba917d327a9bfb3c695ce9c36a37098c"
-    )
-    """选课系统"""
-
-    portal: PKUWebApp = PKUWebApp(
-        app_id="portal2017",
-        url="https://portal.pku.edu.cn/portal2017/ssoLogin.do",
-        route="88413b23c55e32efc0b27ec26ba8b90e"
-    )
-    """信息门户"""
+    "portal": PKUWebApp(
+        "portal2017",
+        "https://portal.pku.edu.cn/portal2017/ssoLogin.do",
+        "88413b23c55e32efc0b27ec26ba8b90e",
+    ),
+}
 
 
 class PKULogin:
