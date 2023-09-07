@@ -47,7 +47,7 @@ class PKUWebApp:
         self.route: str = route
         """据 [这里](https://github.com/PkuRH/PKURunningHelper/blob/b549a1f91257ebab75cad7ab5359b0fafc575a6c/PKURunner/iaaa.py#L60) 说是 salt"""
 
-        self.host: str = urllib.parse.urlparse(url).netloc
+        self.host: str = urllib.parse.urlparse(url).hostname
         """应用 host"""
         if host != None:
             self.host = host
@@ -66,7 +66,7 @@ class PKUWebApps:
 
     syllabus: PKUWebApp = PKUWebApp(
         app_id="syllabus",
-        url="http://elective.pku.edu.cn/elective2008/ssoLogin.do",
+        url="http://elective.pku.edu.cn:80/elective2008/ssoLogin.do",
         route="ba917d327a9bfb3c695ce9c36a37098c"
     )
     """选课系统"""
