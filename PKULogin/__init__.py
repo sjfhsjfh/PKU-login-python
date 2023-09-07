@@ -61,6 +61,14 @@ class PKUWebApp:
             "redirUrl": self.url
         }
 
+    @property
+    def target_url(self) -> str:
+        """remove port from url"""
+
+        url = urllib.parse.urlparse(self.url)
+        url._replace(netloc=url.hostname)
+        return url.geturl()
+
 
 class PKUWebApps:
 
@@ -134,7 +142,10 @@ class PKULogin:
         # Login
         res = self.session.post(
             "https://iaaa.pku.edu.cn/iaaa/oauthlogin.do",
-            data=data
+            data=data,
+            cookies={
+                'username': self.student_id,
+            }
         )
         assert res.json()
         if res.json().get("success"):
@@ -148,11 +159,16 @@ class PKULogin:
             self.session.cookies.set(
                 'route', app.route, domain=app.host, path='/')
             params = {
-                "_rand": random.random(),
-                "token": self.token
+                "_rand": '%.10f' % random.random(),
+                "token": self.token,
             }
             login_res = self.session.get(
-                app.url,
+                app.target_url,
+                headers={
+                    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
+                    "Accept-Encoding": "gzip, deflate, br",
+                    "Host": app.host,
+                },
                 params=params
             )
             if login_res.status_code == 200:
