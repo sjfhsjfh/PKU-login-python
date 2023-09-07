@@ -25,6 +25,12 @@ then run:
 python3 -m unittest test
 ```
 
+## Installation
+
+```bash
+pip install git+https://github.com/sjfhsjfh/PKU-login-python.git
+```
+
 ## Usage
 
 ```python
