@@ -1,8 +1,10 @@
 from setuptools import setup, find_packages
 
+version = '0.1.0'
+
 setup(
     name='PKULogin',
-    version='0.1.0',
+    version=version,
     description='PKU Login python module',
     author='sjfhsjfh',
     author_email='sjfhsjfh@qq.com',
