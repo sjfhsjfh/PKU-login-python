@@ -12,7 +12,14 @@ A Python module to login to iaaa.pku.edu.cn
 
 ## Test
 
-Edit `test.py` to add your student ID and password, then run
+Set your environment variables:
+
+```bash
+export PKU_STUDENT_ID=0 # 你的学号
+export PKU_PASSWORD='' # 你的密码
+```
+
+then run:
 
 ```bash
 python3 -m unittest test

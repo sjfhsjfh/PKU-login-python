@@ -5,33 +5,6 @@ import urllib
 
 logger = logging.getLogger(__name__)
 
-logger.setLevel(logging.DEBUG)
-
-console_handler = logging.StreamHandler()
-console_handler.setLevel(logging.DEBUG)
-
-
-# class CustomFormatter(logging.Formatter):
-#     def format(self, record):
-#         # 获取日志消息的基本格式
-#         base_format = super().format(record)
-
-#         # 获取额外信息的文本表示（将字典转换为字符串）
-#         record.exc_info
-#         extra_info = ", ".join([f"{key}: {value}" for key, value in record.__dict__.items(
-#         ) if key != 'message' and key != 'args'])
-
-#         # 将基本格式和额外信息组合成最终的日志消息
-#         final_message = f"{base_format}, {extra_info}"
-#         return final_message
-
-
-# formatter = CustomFormatter(
-#     '[%(asctime)s] <%(name)s> [%(levelname)s] %(message)s')
-# console_handler.setFormatter(formatter)
-
-logger.addHandler(console_handler)
-
 
 class PKUWebApp:
 
