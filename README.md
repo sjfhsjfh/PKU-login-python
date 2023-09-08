@@ -15,8 +15,8 @@ A Python module to login to iaaa.pku.edu.cn
 Set your environment variables:
 
 ```bash
-export PKU_STUDENT_ID=0 # 你的学号
-export PKU_PASSWORD='' # 你的密码
+export PKU_STUDENT_ID=0; # 你的学号
+export PKU_PASSWORD=''; # 你的密码
 ```
 
 then run:
